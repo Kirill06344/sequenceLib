@@ -24,7 +24,7 @@ func containsByLine(filename string, substring string) (bool, error) {
 	reader := bufio.NewReader(file)
 	for {
 		line, err := reader.ReadString('\n')
-		if err != nil {
+		if len(line) == 0 && err != nil {
 			if err == io.EOF {
 				return false, nil
 			}
